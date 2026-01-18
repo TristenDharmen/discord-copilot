@@ -1,30 +1,65 @@
 # ServerCopilot – Discord AI Assistant (Brief 1)
 
 ## Overview
-ServerCopilot is a Discord bot with an admin-controlled AI assistant.
-Admins can manage bot behavior via a web dashboard and environment configuration.
-The bot responds to slash commands and is designed with production-grade error handling.
+ServerCopilot is a Discord bot with an admin-controlled AI assistant.  
+Admins can manage bot behavior via a web-based admin dashboard, while users interact with the bot using Discord slash commands.
+
+The system is designed with modular architecture, production-grade error handling, and graceful fallback behavior for external API limitations.
+
+---
 
 ## Features
-- Discord slash commands (/ping, /help, /ask, /stats, /logs)
-- Admin-configurable AI assistant
-- Supabase-ready backend for logs and settings
-- Graceful handling of external API failures
-- Modular architecture using Discord.js and Next.js
+- Discord slash commands:
+  - `/ping` – Bot health check
+  - `/help` – List available commands
+  - `/ask` – Ask the AI a question
+  - `/stats` – Usage statistics
+  - `/logs` – Admin-only logs
+- Admin dashboard (Next.js)
+- Supabase backend for logs & settings
+- OpenAI-powered AI assistant
+- Graceful handling of API errors and quota limits
+- Modular architecture using Discord.js & Next.js
+
+---
 
 ## AI Integration Note
-The OpenAI integration is fully implemented using the official OpenAI SDK.
-Live AI responses require OpenAI billing to be enabled.
-During submission, AI responses may be limited due to quota restrictions.
-The system handles this gracefully and informs the user.
+- The OpenAI integration is implemented using the official OpenAI SDK.
+- Live AI responses require **OpenAI billing to be enabled**.
+- During evaluation, if billing is not enabled or quota is exceeded, the bot:
+  - Displays a friendly error message
+  - Continues functioning without crashing
+- This behavior is intentional and handled gracefully.
+
+---
 
 ## Tech Stack
-- Discord.js (Bot)
-- Next.js (Admin Dashboard)
-- Supabase (Database & Auth)
-- OpenAI API (AI Engine)
+- **Discord.js** – Discord Bot
+- **Next.js** – Admin Dashboard
+- **Supabase** – Database & Authentication
+- **OpenAI API** – AI Engine
+- **Vercel** – Dashboard Deployment
 
-## How to Run
-1. Install dependencies
-   ```bash
-   npm install
+---
+
+## Admin Dashboard
+The admin dashboard allows:
+- Viewing logs stored in Supabase
+- Monitoring usage statistics
+- Checking system status
+- Managing bot configuration (future extensibility)
+
+---
+
+## Environment Variables
+Create a `.env` file using the template below:
+
+```env
+DISCORD_TOKEN=your_discord_bot_token
+CLIENT_ID=your_discord_client_id
+GUILD_ID=your_test_guild_id
+
+OPENAI_API_KEY=your_openai_api_key
+
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
