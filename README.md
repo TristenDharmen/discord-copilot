@@ -63,3 +63,6 @@ OPENAI_API_KEY=your_openai_api_key
 
 SUPABASE_URL=your_supabase_project_url
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+## Discord Server Invite
+https://discord.gg/VVVhbVR9
